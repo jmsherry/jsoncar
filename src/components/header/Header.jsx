@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "./header.css";
 import BasicDatePicker from "./BasicDatePicker/BasicDatePicker";
 import Checkbox from "@mui/material/Checkbox";
-import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
+import CarList from "../carlist/CarList";
 
 function Header() {
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
+  const [search, setSearch] = useState("");
+
+  const navigate = useNavigate();
+
+  const submit = () => {
+    navigate("../carhire", { replace: true });
+  };
+
   return (
     <>
       <div className="headerSearch">
@@ -29,6 +38,8 @@ function Header() {
                     <div className="search-Control-input">
                       <input
                         type="text"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
                         placeholder="Enter a city or airport"
                         className="headerSearchInput"
                       />
@@ -50,6 +61,7 @@ function Header() {
                     Driver aged between 25-75
                   </div>
                   <Button
+                    onClick={submit}
                     variant="contained"
                     size="large"
                     className="search-button"

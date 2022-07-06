@@ -10,12 +10,15 @@ import HotelOutlinedIcon from "@mui/icons-material/HotelOutlined";
 import DirectionsCarFilledOutlinedIcon from "@mui/icons-material/DirectionsCarFilledOutlined";
 import ReactCountryFlag from "react-country-flag";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import Snackbar from "@mui/material/Snackbar";
-import MuiAlert, { AlertProps } from "@mui/material/Alert";
 import "./navbar.css";
-import { display } from "@mui/system";
+import { useNavigate } from "react-router-dom";
 
 function Narbar() {
+  const navigate = useNavigate();
+  const submit2 = () => {
+    navigate("../", { replace: true });
+  };
+
   const theme = createTheme({
     palette: {
       primary: {
@@ -52,14 +55,16 @@ function Narbar() {
                 mx: -3,
               }}
             >
-              <Typography
-                color="primary"
-                variant="h3"
-                component="div"
-                sx={{ flexGrow: 0, fontWeight: 500 }}
-              >
-                Rental.com
-              </Typography>
+              <a href="" onClick={submit2}>
+                <Typography
+                  color="primary"
+                  variant="h3"
+                  component="div"
+                  sx={{ flexGrow: 0, fontWeight: 500 }}
+                >
+                  Rental.com
+                </Typography>
+              </a>
 
               <Typography
                 sx={{
