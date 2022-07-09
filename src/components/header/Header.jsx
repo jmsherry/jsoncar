@@ -1,20 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./header.css";
 import BasicDatePicker from "./BasicDatePicker/BasicDatePicker";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
-import CarList from "../carlist/CarList";
+import { SearchContext } from "../searchContext/SearchContext";
 
 function Header() {
+  const { value, setValue } = useContext(SearchContext);
+  const navigate = useNavigate();
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const [search, setSearch] = useState("");
-
-  const navigate = useNavigate();
+  // const [searchResults, setSearchResults] = useState([]);
 
   const submit = () => {
     navigate("../carhire", { replace: true });
   };
+
+  setValue(search);
+  // const mySearch = (search) => {
+  //   if (search !== "") {
+  //     const newSearch = data.filter((item) => {
+  //       return Object.values(item)
+  //         .join(" ")
+  //         .toLowerCase()
+  //         .includes(search.toLowerCase());
+  //     });
+  //     setSearchResults(newSearch);
+  //   } else {
+  //     setSearchResults(data);
+  //   }
+  // };
 
   return (
     <>
