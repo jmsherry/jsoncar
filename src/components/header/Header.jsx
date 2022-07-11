@@ -4,33 +4,19 @@ import BasicDatePicker from "./BasicDatePicker/BasicDatePicker";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
-import { SearchContext } from "../searchContext/SearchContext";
+import { CarsContext } from "../contexts/cars.context";
 
 function Header() {
-  const { value, setValue } = useContext(SearchContext);
+  const { setFilterCity, availableCities } = useContext(CarsContext);
   const navigate = useNavigate();
   const label = { inputProps: { "aria-label": "Checkbox demo" } };
   const [search, setSearch] = useState("");
   // const [searchResults, setSearchResults] = useState([]);
 
   const submit = () => {
-    navigate("../carhire", { replace: true });
+    setFilterCity(search);
+    navigate("/carhire", { replace: true });
   };
-
-  setValue(search);
-  // const mySearch = (search) => {
-  //   if (search !== "") {
-  //     const newSearch = data.filter((item) => {
-  //       return Object.values(item)
-  //         .join(" ")
-  //         .toLowerCase()
-  //         .includes(search.toLowerCase());
-  //     });
-  //     setSearchResults(newSearch);
-  //   } else {
-  //     setSearchResults(data);
-  //   }
-  // };
 
   return (
     <>
@@ -58,7 +44,13 @@ function Header() {
                         onChange={(e) => setSearch(e.target.value)}
                         placeholder="Enter a city or airport"
                         className="headerSearchInput"
+                        list="availableCities"
                       />
+                      <datalist id="availableCities">
+                        {availableCities.map((city) => (
+                          <option key={city} value={city} />
+                        ))}
+                      </datalist>
                     </div>
                   </div>
                   <div className="search-control-date-container">

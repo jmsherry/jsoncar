@@ -1,6 +1,6 @@
 import React from "react";
 import Footer from "../components/footer/Footer";
-import Navbar from "../components/narbar/Narbar";
+import Navbar from "../components/navbar/Navbar";
 import ProductList from "../components/productlist/ProductList";
 
 function Carhire() {

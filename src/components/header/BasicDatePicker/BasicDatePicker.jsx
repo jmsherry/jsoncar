@@ -30,7 +30,7 @@ function BasicDatePicker() {
         onClick={() => setOpenDate(!openDate)}
         id="dateEle"
         type="text"
-        value=""
+        defaultValue=""
         placeholder={inputDate}
         className="DateSearchInput"
       />

@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import React from "react";
@@ -11,13 +12,13 @@ import DirectionsCarFilledOutlinedIcon from "@mui/icons-material/DirectionsCarFi
 import ReactCountryFlag from "react-country-flag";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import "./navbar.css";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
-function Narbar() {
-  const navigate = useNavigate();
-  const submit2 = () => {
-    navigate("../", { replace: true });
-  };
+function Navbar() {
+  // const navigate = useNavigate();
+  // const submit2 = () => {
+  //   navigate("../", { replace: true });
+  // };
 
   const theme = createTheme({
     palette: {
@@ -55,7 +56,7 @@ function Narbar() {
                 mx: -3,
               }}
             >
-              <a href="" onClick={submit2}>
+              <NavLink to="/">
                 <Typography
                   color="primary"
                   variant="h3"
@@ -64,7 +65,7 @@ function Narbar() {
                 >
                   Rental.com
                 </Typography>
-              </a>
+              </NavLink>
 
               <Typography
                 sx={{
@@ -192,4 +193,4 @@ function Narbar() {
   );
 }
 
-export default Narbar;
+export default Navbar;

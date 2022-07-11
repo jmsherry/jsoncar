@@ -56,7 +56,8 @@
     "Gearbox": "Auto",
     "Seats": "5",
     "Doors": "4",
-    "Price": "166"
+    "Price": "166",
+    "City": "Bristol"
   },
   {
     "Make": "Toyota",

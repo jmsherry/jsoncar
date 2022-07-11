@@ -1,27 +1,19 @@
 import React from "react";
 import "./carlist.css";
-import data from "../data/date.json";
+// import data from "../../data/cars.json";
 import { nanoid } from "nanoid";
 import StarIcon from "@mui/icons-material/Star";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import { useContext } from "react";
-import { SearchContext } from "../searchContext/SearchContext";
+import { CarsContext } from "../contexts/cars.context";
 
 function CarList() {
-  const { value, setValue } = useContext(SearchContext);
+  const { filteredCars } = useContext(CarsContext);
 
   return (
     <>
       <div className="master-container">
-        <br></br>
-        {data
-          .filter((val) => {
-            if (value === "") {
-              return val;
-            } else if (val.City.toLowerCase().includes(value.toLowerCase())) {
-              return val;
-            }
-          })
+        {filteredCars
           .map((entry) => (
             <React.Fragment key={nanoid()}>
               <div className="CarListContainer">
@@ -33,6 +25,7 @@ function CarList() {
                     <span className="ClearSans">
                       {"      \u00A0"} or similar
                     </span>
+                    {entry.City}
                   </h3>
                   <span className="logo-bar">
                     <div className="header-bar-logo1">
